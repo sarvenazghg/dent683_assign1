@@ -65,4 +65,7 @@ final_mrg <- merge(mrg2, mrg, by = "SEQN",
 here()
 write.csv (final_mrg, here("Data","Dem_Oh_17-10-2021.csv"))
 
+# number of participants in the final merged data set by the year of survey
+final_mrg %>% group_by(year)%>%
+  tally()
           
