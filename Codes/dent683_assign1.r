@@ -54,5 +54,15 @@ dem12.syr <- dem12 %>% select (SEQN, year,RIDAGEYR)
 dem14.syr <- dem14 %>% select (SEQN, year,RIDAGEYR)
 dem16.syr <- dem16 %>% select (SEQN, year,RIDAGEYR)
 dem18.syr <- dem18 %>% select (SEQN, year,RIDAGEYR)
+
 # To get only one data set, now i merge these four sub dataset 
 mrg2 <- bind_rows(dem12.syr, dem14.syr, dem16.syr,dem18.syr)
+# 6.5 To merge two datasets from 6.2 and 6.4, 
+# not including the non-matching rows in the twodatasets
+final_mrg <- merge(mrg2, mrg, by = "SEQN", 
+                   all.x = F,all.y =F)
+# To save the file in data folder 
+here()
+write.csv (final_mrg, here("Data","Dem_Oh_17-10-2021.csv"))
+
+          
